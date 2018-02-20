@@ -7,10 +7,30 @@
   </p>
  
   <p>
-    <%= form.label "text" %><br>
-    <%= form.text_area "text" %>
+    <%= form.label "date" %><br>
+    <%= form.text_field "date", placeholder: "DD/MM/YYYY" %>
   </p>
  
+  <p>
+    <%= form.label "image" %><br>
+    <%= form.text_field "image", placeholder: "Your image URL..." %>
+  </p>
+
+  <p>
+    <%= form.label "header" %><br>
+    <%= form.text_area "header" %>
+  </p>
+
+  <p>
+    <%= form.label "body" %><br>
+    <%= form.text_area "body" %>
+  </p>
+
+  <p>
+    <%= form.label "author" %><br>
+    <%= form.text_field "author" %>
+  </p>
+
   <p>
     <%= form.submit %>
   </p>

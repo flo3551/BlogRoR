@@ -1,0 +1,15 @@
+<h1>Articles lists</h1>
+<%= @articles.count %> Articles
+<div>
+	<%- @articles.each do |article| %>
+		<p>
+			<h3><%= article.title %></h3>
+			<span>Published on <%= article.date %> by <%= article.author %></span>
+			<span><%= article.header %></span>
+		</p>
+		<li><%= link_to "Read more..", article_path(article) %></li>
+		<hr>
+	<%- end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
