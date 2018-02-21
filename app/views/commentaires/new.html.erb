@@ -3,12 +3,12 @@
 <%= form_for @commentaire, url: [@article, @commentaire] do |f| %>
 	<p>
 	    <%= f.label "pseudo" %><br>		
-		<%= f.text_field "pseudo" %>
+		<%= f.text_field "pseudo", class: 'form-control' %>
 	</p>
 
 	<p>
 	    <%= f.label "body" %><br>		
-		<%= f.text_field "body" %>
+		<%= f.text_field "body", class: 'form-control' %>
 	</p>
 	<%= f.submit %>
 <% end %>
