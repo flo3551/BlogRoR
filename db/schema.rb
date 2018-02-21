@@ -19,15 +19,27 @@ ActiveRecord::Schema.define(version: 20180221002028) do
     t.string "image"
     t.string "header"
     t.string "body"
+    t.integer "user_id"
     t.string "author"
   end
 
   create_table "commentaires", force: :cascade do |t|
     t.string   "pseudo"
-    t.integer "article_id"
+    t.integer  "article_id"
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "recover_password"
   end
 
 end

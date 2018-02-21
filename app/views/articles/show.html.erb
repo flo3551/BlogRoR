@@ -1,29 +1,40 @@
-<span> Published on <%= @article.date %>, by <%= @article.author %></span>
-<h1> <%= @article.title %> </h1>
-
-<div>
-	<h4> <%= @article.header %> </h4>
-	<img style="height:200px; width: auto;" src="<%= @article.image %>">
-	<p> <%= @article.body %> </p>
 
 
-  <p><%= link_to 'Back', articles_path %></p>
-	<li><%= link_to "Edit article", edit_article_path(@article) %></li>
-	<li>
-		<%= link_to "Delete article", article_path(@article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-    </li>
+<li type="button" class=" mb-3 mt-5 btn btn-light"><%= link_to 'Back', articles_path %></li>
 
-<div style="border-width: 1px; border-style:solid">
-  <h3 style="margin: 1%;">Comments</h3>
+<div class="card">
+  <div class="card-header">
+    <h3><%= @article.title %></h3>  </div>
+  <div class="card-body">
+    <img style="height:200px; width: auto;" src="<%= @article.image %>">
+
+    <p class="card-text"> <h4> <%= @article.header %> </h4>
+      <p> 
+        <%= @article.body %> 
+      </p>
+      <p>Published on <%= @article.date %>, by <%= @article.author %></p>
+    </p>
+    <li class="btn btn-primary"><%= link_to "Edit article", edit_article_path(@article) %></li>
+    <li class="btn btn-primary"><%= link_to "Delete article", article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </div>
+</div>
+
+
+<div class="card mt-3">
+  <div class="card-body">
+      <h3>Comments</h3>
+      <li class="btn btn-success"><%= link_to "New Comment", new_article_commentaire_path(@article) %></li>
+
     <%- @article.commentaires.each do |commentaire| %>
-      <div style="border-width: 1px; border-style:solid; padding: 5px; margin: 1%;">
-        <p>De : <%= commentaire.pseudo %> </p>
+      <div class="card mt-4">
+          <div class="card-header">
+            <p>De : <%= commentaire.pseudo %> </p>
+          </div>
+        <div class="card-body">
+        
         <p><%= commentaire.body %></p>
       </div>
+      </div>
     <%- end %>
-</div>
-  <%= link_to "Nouveau commentaire..", new_article_commentaire_path(@article) %>
-
+  </div>
 </div>
