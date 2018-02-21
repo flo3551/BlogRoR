@@ -15,7 +15,6 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
-
         @article.save
         redirect_to @article
     end
@@ -26,7 +25,7 @@ class ArticlesController < ApplicationController
         if @article.valid?
             redirect_to article_path(@article)
         else
-            render "edit"
+            redirect_to edit_article_path(@article)
         end
     end
 
@@ -39,7 +38,7 @@ class ArticlesController < ApplicationController
 
     private
         def article_params
-            params.require(:article).permit(:title, :date, :image, :header, :body) #Manque l'auteur : provoque erreur (:author)
+            params.require(:article).permit(:title, :date, :image, :header, :body, :author) #Manque l'auteur : provoque erreur (:author)
         end
     private
         def article_find

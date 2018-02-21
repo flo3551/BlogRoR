@@ -3,13 +3,14 @@
 
 <div>
 	<h4> <%= @article.header %> </h4>
-	<img src="<%= @article.image %>">
+	<img style="height:200px; width: auto;" src="<%= @article.image %>">
 	<p> <%= @article.body %> </p>
 
 
-	<li><%= link_to "edit article", edit_article_path(@article) %></li>
+  <p><%= link_to 'Back', articles_path %></p>
+	<li><%= link_to "Edit article", edit_article_path(@article) %></li>
 	<li>
-		<%= link_to "delete article", article_path(@article),
+		<%= link_to "Delete article", article_path(@article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
     </li>
@@ -24,7 +25,6 @@
     <%- end %>
 </div>
   <%= link_to "Nouveau commentaire..", new_article_commentaire_path(@article) %>
-
 
 
 
