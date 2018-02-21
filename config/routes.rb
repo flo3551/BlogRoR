@@ -1,12 +1,27 @@
 Rails.application.routes.draw do
-  #resources :commentaires
-  get 'welcome/index'
+
+    root to: 'articles#index'
+
+  get '/profil', to: 'users#edit', as: :profil
+  patch '/profil', to: 'users#update'
+
+  patch '/articles', to: 'articles#index', as: :articles
+  # Session
+  get '/login', to: 'sessions#new', as: :new_session
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: :destroy_session
+
+  resources :passwords, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit] do
+    member do
+      get 'confirm'
+  end
+end
 
   resources "articles" do 
     resources "commentaires"
   end
 
-  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

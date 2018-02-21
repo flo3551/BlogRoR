@@ -3,32 +3,32 @@
 <%= form_for @article do |form| %>
   <p>
     <%= form.label "title" %><br>
-    <%= form.text_field "title" %>
+    <%= form.text_field "title", class: 'form-control' %>
   </p>
  
   <p>
     <%= form.label "date" %><br>
-    <%= form.text_field "date", placeholder: "DD/MM/YYYY" %>
+    <%= form.text_field "date", placeholder: "DD/MM/YYYY", class: 'form-control' %>
   </p>
  
   <p>
     <%= form.label "image" %><br>
-    <%= form.text_field "image", placeholder: "Your image URL..." %>
+    <%= form.text_field "image", placeholder: "Your image URL...", class: 'form-control'%>
   </p>
 
   <p>
     <%= form.label "header" %><br>
-    <%= form.text_area "header" %>
+    <%= form.text_area "header", class: 'form-control' %>
   </p>
 
   <p>
     <%= form.label "body" %><br>
-    <%= form.text_area "body" %>
+    <%= form.text_area "body", class: 'form-control' %>
   </p>
 
   <p>
     <%= form.label "author" %><br>
-    <%= form.text_field "author" %>
+    <%= form.text_field "author", class: 'form-control' %>
   </p>
 
   <p>
