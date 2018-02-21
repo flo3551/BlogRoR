@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
- def index
+    before_action :article_find, only:[:show, :update, :edit, :destroy]
+
+    def index
        @articles = Article.all 
     end
 
@@ -18,8 +20,30 @@ class ArticlesController < ApplicationController
         redirect_to @article
     end
 
+    def update
+        article = article_find
+        @article.update_attributes(article_params)
+        if @article.valid?
+            redirect_to article_path(@article)
+        else
+            render "edit"
+        end
+    end
+
+    def destroy
+        @article = article_find
+        @article.destroy
+
+        redirect_to articles_path
+    end
+
     private
         def article_params
-            params.require(:article).permit(:title, :text)
+            params.require(:article).permit(:title, :date, :image, :header, :body) #Manque l'auteur : provoque erreur (:author)
         end
+    private
+        def article_find
+            @article = Article.find(params[:id])
+        end
+
 end

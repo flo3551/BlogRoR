@@ -5,4 +5,31 @@
 	<h4> <%= @article.header %> </h4>
 	<img src="<%= @article.image %>">
 	<p> <%= @article.body %> </p>
+
+
+	<li><%= link_to "edit article", edit_article_path(@article) %></li>
+	<li>
+		<%= link_to "delete article", article_path(@article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </li>
+
+<div style="border-width: 1px; border-style:solid">
+  <h3 style="margin: 1%;">Comments</h3>
+    <%- @article.commentaires.each do |commentaire| %>
+      <div style="border-width: 1px; border-style:solid; padding: 5px; margin: 1%;">
+        <p>De : <%= commentaire.pseudo %> </p>
+        <p><%= commentaire.body %></p>
+      </div>
+    <%- end %>
+</div>
+  <%= link_to "Nouveau commentaire..", new_article_commentaire_path(@article) %>
+
+
+
+
+ 
+
+
+
 </div>
